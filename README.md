@@ -16,4 +16,4 @@ https://user-images.githubusercontent.com/20980984/155869390-dc2e16c3-c4d0-4cfa-
 
 ## Exemplo de consulta sem utilizar pool de conexão:
 
-https://user-images.githubusercontent.com/20980984/155856819-50a27bf0-d7ef-4f9e-a7b9-2427caca7dcb.mp4
+https://user-images.githubusercontent.com/20980984/155869410-176aeacd-2c37-41e9-abd5-55b1d42d0eda.mp4
