@@ -10,7 +10,7 @@ https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 * Banco de Dados: Firebird 2.5 (DB\MultithreadingFireDAC.FDB)
 * IDE: Delphi 10.3.3
 
-## Exemplo de processamento utilizando pool de conexão:
+## Exemplo de consulta utilizando pool de conexão:
 
 https://user-images.githubusercontent.com/20980984/155856770-b94881f1-a143-40d5-84ff-1375c4bae73d.mp4
 
