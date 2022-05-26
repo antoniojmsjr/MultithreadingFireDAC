@@ -7,8 +7,9 @@ Foi utilizado o componente FDManager para gerenciar as conexões e o pool.
 https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 
 
-* Banco de Dados: Firebird 2.5 (DB\MultithreadingFireDAC.FDB)
+* Banco de Dados: Firebird (DB\MultithreadingFireDAC.FDB)
 * IDE: Delphi 10.3.3
+* Firebird: 2.5.7 [Donwload](http://sourceforge.net/projects/firebird/files/firebird-win32/2.5.7-Release/Firebird-2.5.7.27050_0_Win32.exe/download)
 
 ## Exemplo de consulta utilizando pool de conexão:
 
