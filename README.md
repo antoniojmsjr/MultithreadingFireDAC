@@ -2,7 +2,7 @@
 
 Programa de exemplo usando multithreading com Firedac.
 
-Foi utilizado o componente FDManager para gerenciar as conexões e o pool.
+Foi utilizado o componente **FDManager** para gerenciar as conexões e o pool.
 
 https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 
