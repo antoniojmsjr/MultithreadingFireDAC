@@ -11,7 +11,7 @@ https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 * IDE: Delphi 10.3.3
 * Firebird: 2.5.7 [Donwload](http://sourceforge.net/projects/firebird/files/firebird-win32/2.5.7-Release/Firebird-2.5.7.27050_0_Win32.exe/download)
 
-Para usar o **FDManager** com outros bancos de dados, verificar o link: [Database Connectivity (FireDAC)](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Database_Connectivity_(FireDAC))
+Para usar o **FDManager** com outros bancos de dados, verificar o link: [Database Connectivity (FireDAC) - Driver Linkage](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Database_Connectivity_(FireDAC))
 
 ## Exemplo de consulta utilizando pool de conexão:
 
