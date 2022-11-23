@@ -42,7 +42,7 @@ uses
 
 ```delphi
 const
-  CONNECTION_NAME = 'CONNECTION_APP_DATABASE';
+  CONNECTION_DB_NAME = 'CONNECTION_APP_DATABASE';
   DRIVER_NAME = 'FB_2.5';
 
 var
@@ -52,7 +52,7 @@ var
   lFDStanDefinition: IFDStanDefinition;
 begin
   //PARA CRIAR OU ALTERAR É NECESSÁRIO FECHAR A O FDMANGER REFERENTE A ConnectionDefName
-  FDManager.CloseConnectionDef(CONNECTION_NAME);
+  FDManager.CloseConnectionDef(CONNECTION_DB_NAME);
 
   FDManager.ActiveStoredUsage := [auRunTime];
   FDManager.ConnectionDefFileAutoLoad := False;
@@ -70,11 +70,11 @@ begin
   lFDStanDefinition.AsString['VendorLib'] := 'fbclient.dll'; //DEFINE O CAMINHO DA DLL CLIENT DO FIREBIRD. [OPCIONAL]
 
   //CONNECTION
-  lFDStanConnectionDef := FDManager.ConnectionDefs.FindConnectionDef(CONNECTION_NAME);
-  if not Assigned(FDManager.ConnectionDefs.FindConnectionDef(CONNECTION_NAME)) then
+  lFDStanConnectionDef := FDManager.ConnectionDefs.FindConnectionDef(CONNECTION_DB_NAME);
+  if not Assigned(FDManager.ConnectionDefs.FindConnectionDef(CONNECTION_DB_NAME)) then
   begin
     lFDStanConnectionDef := FDManager.ConnectionDefs.AddConnectionDef;
-    lFDStanConnectionDef.Name := CONNECTION_NAME;
+    lFDStanConnectionDef.Name := CONNECTION_DB_NAME;
   end;
 
   //DEFINIÇÃO DE CONEXÃO: PRIVADO :: https://docwiki.embarcadero.com/RADStudio/Sydney/en/Defining_Connection_(FireDAC)
@@ -116,7 +116,7 @@ begin
     FDManager.Open;
 ```
 
-# Usando a configuração criada
+### Usando a configuração criada
 
 ```delphi
 uses
@@ -141,7 +141,7 @@ begin
   end;
 end;
 
-QueryOpen(CONNECTION_NAME, 'SELECT * FROM TABLE');
+QueryOpen(CONNECTION_DB_NAME, 'SELECT * FROM TABLE');
 ```
 
 ## Exemplo de consulta utilizando pool de conexão:
