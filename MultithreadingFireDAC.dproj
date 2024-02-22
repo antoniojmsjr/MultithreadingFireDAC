@@ -5,7 +5,7 @@
         <FrameworkType>FMX</FrameworkType>
         <MainSource>MultithreadingFireDAC.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>37983</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -411,6 +411,7 @@
             <Form>frmMain</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="Global.Common.Strings.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -85,7 +85,8 @@ implementation
 
 uses
   System.Generics.Collections, System.Threading, System.SyncObjs,
-  System.Diagnostics, Winapi.ShellAPI, Winapi.Windows, FDManagerConfig;
+  System.Diagnostics, Winapi.ShellAPI, Winapi.Windows, FDManagerConfig,
+  Global.Common.Strings;
 
 {$R *.fmx}
 
@@ -331,8 +332,9 @@ function TfrmMain.CreateItemListBox(pListBox: TListBox;
 begin
   pListBox.BeginUpdate;
   try
+    Sleep(1);
     Result := TListBoxItem.Create(pListBox);
-    Result.Name := Format('lbiItem_%x%.5d', [Random(255), Random(10000)]);;
+    Result.Name := TStringsUtils.GUIDToName('lbiItem_');
     Result.ItemData.Text := pText;
     Result.ItemData.Detail := 'Status...';
     Result.Parent := pListBox;
