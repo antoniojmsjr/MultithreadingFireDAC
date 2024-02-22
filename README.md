@@ -8,6 +8,7 @@ https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 
 
 * Banco de Dados: Firebird (DB\MultithreadingFireDAC.FDB)
+  * Tabela MULTITHREADING com 100.000 registros.
 * Firebird: 2.5.7 [Donwload](http://sourceforge.net/projects/firebird/files/firebird-win32/2.5.7-Release/Firebird-2.5.7.27050_0_Win32.exe/download)
 
 Para usar o **FDManager** com outros bancos de dados, verificar o link: [Database Connectivity (FireDAC) #Driver Linkage](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Database_Connectivity_(FireDAC))
