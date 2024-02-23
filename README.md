@@ -1,15 +1,26 @@
 # Multithreading (FireDAC)
 
-Em uma aplicação multithread, uma boa pratica é isolar os componentes de acesso ao banco de dados, a violação dessa prática pode gerar erros do tipo access violation entre outros erros por causo do compartilhamento de componentes. Para ajudar a resolver esse problema, a [Embarcadero](https://www.embarcadero.com/br/) disponibilizou um componente, o **FDManager**, que é responsável pelas definições de conexão e gerenciamento de conexões e é thread-safe(utilização segura em ambientes multithread).
+Em uma aplicação multithread, uma boa pratica é isolar os componentes de acesso ao banco de dados, a violação dessa prática pode gerar erros do tipo access violation entre outros erros por causo do compartilhamento desses componentes. Para ajudar a resolver esse problema, a [Embarcadero](https://www.embarcadero.com/br/) disponibilizou um componente, o **FDManager**, que é responsável pelas definições de conexão e gerenciamento de conexões e é thread-safe(utilização segura em ambientes multithread).
 
 **Fonte:** https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 
 **Vantagens do uso do FDManager**
 
 * Definição da biblioteca cliente de acesso ao banco de dados. [OPCIONAL]
-  
+  * Por exemplo:
+      * Definir o local da biblioteca cliente(fbclient.dll) do Firebird 2.5;
+      * Definir o local da biblioteca cliente do Firebird(fbclient.dll) 64Bits;
+
 * Centralização das configurações de conexão com o banco de dados.
+    * Por exemplo:
+      * Definir as configurações de acesso ao banco de produção.
+      * Definir as configurações de acesso ao banco de log.
+
 * Centralização das parametrizações do componente TFDConnection.
+NOTA: Essa configuração se extende para todos os FDConnection usado na aplicação.
+  * Por exemplo:
+    * FetchOptions.Mode := TFDFetchMode.fmAll;
+    * ResourceOptions.AutoConnect := False;
 
 
 * Banco de Dados: Firebird (DB\MultithreadingFireDAC.FDB)
