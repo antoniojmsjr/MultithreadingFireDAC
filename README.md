@@ -33,9 +33,16 @@ Este custo para estabelecer uma conexão com o banco de dados pode ser visto na 
 
 ![LogWireShark](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/bd44b13e-11fe-46c5-8e83-2692942bc7ca)
 
+Podemos ver na imagem abaixo o comportamento das consultas ao banco de dados usando pool de conexões:
+
+* Do lado esquerdo o famoso "abre-fecha", um exemplo de consulta sem a utilização do pool de conexões.
+* Do lado direito, um exemplo de consulta utilizando pool de conexões.
+![image](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/bfd548e1-87e9-4a55-b83e-e9a0f948c24d)
+
+
 ### Configuração do pool de conexões
 
-Para configurar um pool de conexões utilizaremos o FDManager, e as propriedades de pool.
+Para configurar um pool de conexões utilizaremos o **FDManager**, e as propriedades de pool.
 
 | Parâmetro | Descrição | Exemplo |
 |---|---|---|
@@ -43,6 +50,8 @@ Para configurar um pool de conexões utilizaremos o FDManager, e as propriedades
 |POOL_CleanupTimeout|O tempo em milissegundos até o FireDAC **remover** as conexões que não foram usadas até o tempo POOL_ExpireTimeout.</br></br>O valor padrão é 30000 ms (30 segundos).|15000 ms</br>15 s |
 |POOL_ExpireTimeout|O tempo em milissegundos, após o qual a **conexão inativa** pode ser excluída do pool e destruída.</br></br>O valor padrão é 90000 ms (90 segundos).|60000 ms</br>60 s |
 |POOL_MaximumItems|O número máximo de conexões no Pool.</br></br>Quando o aplicativo requer mais conexões, uma exceção é gerada. O valor padrão é 50.</br></br>**Quando se atinge o número total de conexões especificada nessa  propriedade, é gerado uma exceção:**</br></br>![image](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/ad15ed9f-f02a-4a60-b3a1-c37df8b62316)|100|
+
+Em geral, o **FDManager** mantém um pool de conexões "físicas" abertas, e quando TFDConnection.Connected é definido como True, o FireDAC pega uma conexão "física" do pool e a usa. Quando TFDConnection.Connected é definido como False, a conexão "física" não é fechada, mas colocada de volta no pool.
 
 ### Configuração de acesso ao banco de dados
 
@@ -67,10 +76,8 @@ Para usar o **FDManager** com outros bancos de dados, verificar o link: [Databas
 
 Em anexo no projeto existem dois exemplos de uso de conexão com o banco de dados em ambientes multithread.
 
-## Exemplo de consulta utilizando pool de conexão:
+### Exemplo de consulta com pool de conexões ATIVADO:
+https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/94dea460-6932-4c9b-89a9-0db6ff67b4c7
 
-https://user-images.githubusercontent.com/20980984/155869390-dc2e16c3-c4d0-4cfa-bede-c9442a562dab.mp4
-
-## Exemplo de consulta sem utilizar pool de conexão:
-
-https://user-images.githubusercontent.com/20980984/155869410-176aeacd-2c37-41e9-abd5-55b1d42d0eda.mp4
+### Exemplo de consulta com pool de conexões DESATIVADO:
+https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/75e72a62-5c7d-44c1-86e9-ed0e47cbcac8
