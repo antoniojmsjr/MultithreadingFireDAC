@@ -42,7 +42,7 @@ Podemos ver na imagem abaixo o comportamento das consultas ao banco de dados usa
 
 ### Configuração do pool de conexões
 
-Para configurar um pool de conexões utilizaremos o FDManager, e as propriedades de pool.
+Para configurar um pool de conexões utilizaremos o **FDManager**, e as propriedades de pool.
 
 | Parâmetro | Descrição | Exemplo |
 |---|---|---|
@@ -50,6 +50,8 @@ Para configurar um pool de conexões utilizaremos o FDManager, e as propriedades
 |POOL_CleanupTimeout|O tempo em milissegundos até o FireDAC **remover** as conexões que não foram usadas até o tempo POOL_ExpireTimeout.</br></br>O valor padrão é 30000 ms (30 segundos).|15000 ms</br>15 s |
 |POOL_ExpireTimeout|O tempo em milissegundos, após o qual a **conexão inativa** pode ser excluída do pool e destruída.</br></br>O valor padrão é 90000 ms (90 segundos).|60000 ms</br>60 s |
 |POOL_MaximumItems|O número máximo de conexões no Pool.</br></br>Quando o aplicativo requer mais conexões, uma exceção é gerada. O valor padrão é 50.</br></br>**Quando se atinge o número total de conexões especificada nessa  propriedade, é gerado uma exceção:**</br></br>![image](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/ad15ed9f-f02a-4a60-b3a1-c37df8b62316)|100|
+
+Em geral, o **FDManager** mantém um pool de conexões "físicas" abertas, e quando TFDConnection.Connected é definido como True, o FireDAC pega uma conexão "física" do pool e a usa. Quando TFDConnection.Connected é definido como False, a conexão "física" não é fechada, mas colocada de volta no pool.
 
 ### Configuração de acesso ao banco de dados
 
