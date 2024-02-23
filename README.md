@@ -33,6 +33,13 @@ Este custo para estabelecer uma conexão com o banco de dados pode ser visto na 
 
 ![LogWireShark](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/bd44b13e-11fe-46c5-8e83-2692942bc7ca)
 
+Podemos ver na imagme abaixo o comportamento das consultas ao banco de dados usando pool de conexões:
+
+* Do lado esquerdo o famoso "abre-fecha", um exemplo de consulta sem a utilização do pool de conexões.
+* Do lado direito, um exemplo de consulta utilizando pool de conexões.
+![image](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/bfd548e1-87e9-4a55-b83e-e9a0f948c24d)
+
+
 ### Configuração do pool de conexões
 
 Para configurar um pool de conexões utilizaremos o FDManager, e as propriedades de pool.
