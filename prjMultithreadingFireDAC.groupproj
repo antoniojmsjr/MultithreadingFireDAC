@@ -3,7 +3,7 @@
         <ProjectGuid>{CD43A718-2CDA-4C58-80DB-E1198F42BD36}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="Samples\VCL\VCL.dproj">
+        <Projects Include="Samples\MultithreadingFireDAC\MultithreadingFireDAC.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -14,23 +14,23 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="VCL">
-        <MSBuild Projects="Samples\VCL\VCL.dproj"/>
+    <Target Name="MultithreadingFireDAC">
+        <MSBuild Projects="Samples\MultithreadingFireDAC\MultithreadingFireDAC.dproj"/>
     </Target>
-    <Target Name="VCL:Clean">
-        <MSBuild Projects="Samples\VCL\VCL.dproj" Targets="Clean"/>
+    <Target Name="MultithreadingFireDAC:Clean">
+        <MSBuild Projects="Samples\MultithreadingFireDAC\MultithreadingFireDAC.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="VCL:Make">
-        <MSBuild Projects="Samples\VCL\VCL.dproj" Targets="Make"/>
+    <Target Name="MultithreadingFireDAC:Make">
+        <MSBuild Projects="Samples\MultithreadingFireDAC\MultithreadingFireDAC.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="VCL"/>
+        <CallTarget Targets="MultithreadingFireDAC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="VCL:Clean"/>
+        <CallTarget Targets="MultithreadingFireDAC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="VCL:Make"/>
+        <CallTarget Targets="MultithreadingFireDAC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

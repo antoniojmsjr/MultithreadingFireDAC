@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
   Vcl.StdCtrls, Vcl.Buttons, Vcl.Samples.Spin, System.Diagnostics, Vcl.ComCtrls,
-  dxGDIPlusClasses;
+  Vcl.Imaging.pngimage;
 
 type
   TTypeLog = (tlERRO, tlTEMPO, tlINFO, tlLINE);
