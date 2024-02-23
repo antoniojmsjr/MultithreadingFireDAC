@@ -1,6 +1,6 @@
 # Multithreading (FireDAC)
 
-Em uma aplicação multithread, uma boa prática é isolar os componentes de acesso ao banco de dados, a violação dessa prática pode gerar erros do tipo access violation entre outros erros por causo do compartilhamento desses componentes. Para ajudar a resolver esse problema, a [Embarcadero](https://www.embarcadero.com/br/) disponibilizou um componente, o **FDManager**, que é responsável pelas definições de conexão e gerenciamento de conexões e é thread-safe(utilização segura em ambientes multithread).
+Em uma aplicação multithread, uma boa prática é isolar os componentes de acesso ao banco de dados, a violação dessa prática pode gerar erros do tipo access violation entre outros erros por causo do compartilhamento desses componentes. Para ajudar a resolver esse problema, a [Embarcadero](https://www.embarcadero.com/br/) disponibilizou um componente, o **[FDManager](http://docwiki.embarcadero.com/Libraries/Rio/en/FireDAC.Comp.Client.TFDManager)**, que é responsável pelas definições de conexão e gerenciamento de conexões e é thread-safe(utilização segura em ambientes multithread).
 
 **Fonte:** https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 
@@ -28,11 +28,21 @@ Além do uso do **FDManger** uma boa prática e o uso da técnica de otimizaçã
 
 Quando precisamos realizar qualquer operação sobre um banco de dados é primeiramente necessário estabelecer uma conexão com ele, o estabelecimento dessa conexão costuma ocorrer através do protocolo **TCP/IP**, envolvendo custo para ser aberto e finalizado. Esses custos são particularmente significativos em **aplicações Web** onde você pode ter um fluxo de milhares de requisições constantes, e cada uma delas vai gerar a abertura e fechamento de uma nova conexão com o banco de dados. Uma técnica simples para evitar esse constante "abre-fecha" de conexões é manter um determinado número de conexões sempre aberta (um "pool" de conexões) e simplesmente reutilizar quando necessário, dessa forma você diminui tanto o gasto de recursos da máquina quanto o tempo de resposta da sua aplicação.
 
+
 Este custo para estabelecer uma conexão com o banco de dados pode ser visto na imagem abaixo, utilizando a ferramenta *WireShark* podemos ver a quantidade de pacotes que é utlizado para executar um simples select.
 
 ![LogWireShark](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/bd44b13e-11fe-46c5-8e83-2692942bc7ca)
 
+### Configuração do pool de conexões
 
+Para configurar um pool de conexões utilizaremos o FDManager, e as propriedades de pool.
+
+| Parâmetro | Descrição | Exemplo |
+|---|---|---|
+|Pooled|Ativa o pool de conexões para uma definição de conexão. </br></br> Para usar um pool de conexões, a definição de conexão deve ser [persistente](https://docwiki.embarcadero.com/RADStudio/Alexandria/en/Defining_Connection_(FireDAC)#Creating_a_Persistent_Connection_Definition) ou [privada](https://docwiki.embarcadero.com/RADStudio/Alexandria/en/Defining_Connection_(FireDAC)#Creating_a_Private_Connection_Definition).|True|
+|POOL_CleanupTimeout|O tempo em milissegundos até o FireDAC **remover** as conexões que não foram usadas até o tempo POOL_ExpireTimeout.</br></br>O valor padrão é 30000 ms (30 segundos).|15000 ms</br>15 s |
+|POOL_ExpireTimeout|O tempo em milissegundos, após o qual a **conexão inativa** pode ser excluída do pool e destruída.</br></br>O valor padrão é 90000 ms (90 segundos).|60000 ms</br>60 s |
+|POOL_MaximumItems|O número máximo de conexões no Pool.</br></br>Quando o aplicativo requer mais conexões, uma exceção é gerada. O valor padrão é 50.</br></br>**Quando se atinge o número total de conexões especificada nessa  propriedade, é gerado uma exceção:**</br></br>![image](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/ad15ed9f-f02a-4a60-b3a1-c37df8b62316)|100|
 
 * Banco de Dados: Firebird (DB\MultithreadingFireDAC.FDB)
   * Tabela MULTITHREADING com 100.000 registros.
