@@ -1,10 +1,15 @@
 # Multithreading (FireDAC)
 
-Programa de exemplo usando multithreading e pool de conexão com Firedac.
+Em uma aplicação multithread, uma boa pratica é isolar os componentes de acesso ao banco de dados, a violação dessa prática pode gerar erros do tipo access violation e outros erros inesperados por causo do compartilhamento de componentes. Para ajudar a resolver esse problema, a [Embarcadero](https://www.embarcadero.com/br/) disponibilizou um componente, o **FDManager**, que é responsável pelas definições de conexão e gerenciamento de conexões e é thread-safe(utilização segura em ambientes multithread).
 
-Foi utilizado o componente **FDManager** para gerenciar as conexões e o pool conforme a recomendação da Embarcadero.
+**Fonte:** https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 
-https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
+**Vantagens do uso do FDManager**
+
+* Definição da biblioteca cliente de acesso ao banco de dados. [OPCIONAL]
+  
+* Centralização das configurações de conexão com o banco de dados.
+* Centralização das parametrizações do componente TFDConnection.
 
 
 * Banco de Dados: Firebird (DB\MultithreadingFireDAC.FDB)
