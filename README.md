@@ -78,8 +78,8 @@ Em anexo no projeto existem dois exemplos de uso de conexão com o banco de dado
 
 ## Exemplo de consulta utilizando pool de conexão:
 
-https://user-images.githubusercontent.com/20980984/155869390-dc2e16c3-c4d0-4cfa-bede-c9442a562dab.mp4
+
 
 ## Exemplo de consulta sem utilizar pool de conexão:
 
-https://user-images.githubusercontent.com/20980984/155869410-176aeacd-2c37-41e9-abd5-55b1d42d0eda.mp4
+
