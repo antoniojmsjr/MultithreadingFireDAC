@@ -44,16 +44,14 @@ Para configurar um pool de conexões utilizaremos o FDManager, e as propriedades
 |POOL_ExpireTimeout|O tempo em milissegundos, após o qual a **conexão inativa** pode ser excluída do pool e destruída.</br></br>O valor padrão é 90000 ms (90 segundos).|60000 ms</br>60 s |
 |POOL_MaximumItems|O número máximo de conexões no Pool.</br></br>Quando o aplicativo requer mais conexões, uma exceção é gerada. O valor padrão é 50.</br></br>**Quando se atinge o número total de conexões especificada nessa  propriedade, é gerado uma exceção:**</br></br>![image](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/ad15ed9f-f02a-4a60-b3a1-c37df8b62316)|100|
 
-* Banco de Dados: Firebird (DB\MultithreadingFireDAC.FDB)
-  * Tabela MULTITHREADING com 100.000 registros.
-* Firebird: 2.5.7 [Donwload](http://sourceforge.net/projects/firebird/files/firebird-win32/2.5.7-Release/Firebird-2.5.7.27050_0_Win32.exe/download)
+
 
 Para usar o **FDManager** com outros bancos de dados, verificar o link: [Database Connectivity (FireDAC) #Driver Linkage](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Database_Connectivity_(FireDAC))
 
-| Database | TFDConnectionDefParams | Units |
-|---|---|---|
-| [Microsoft SQL Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_Microsoft_SQL_Server_(FireDAC)) | TFDPhysMSSQLConnectionDefParams | FireDAC.Phys.MSSQLDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL |
-| [Oracle Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_Oracle_Server_(FireDAC)) | TFDPhysOracleConnectionDefParams | FireDAC.Phys.OracleDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.Oracle |
+| Database | DriverID | TFDConnectionDefParams | Units |
+|---|---|---|---|
+| [Microsoft SQL Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_Microsoft_SQL_Server_(FireDAC)) | MSSQL | TFDPhysMSSQLConnectionDefParams | FireDAC.Phys.MSSQLDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL |
+| [Oracle Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_Oracle_Server_(FireDAC)) | | TFDPhysOracleConnectionDefParams | FireDAC.Phys.OracleDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.Oracle |
 | [PostgreSQL](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_PostgreSQL_(FireDAC)) | TFDPhysPGConnectionDefParams | FireDAC.Phys.PGDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.PG; |
 | [MySQL Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_MySQL_Server_(FireDAC)) | TFDPhysMySQLConnectionDefParams | FireDAC.Phys.MySQLDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.MySQL |
 | [IBM DB2 Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_IBM_DB2_Server_(FireDAC))) | TFDPhysDB2ConnectionDefParams | FireDAC.Phys.DB2Def, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.ODBCBase, FireDAC.Phys.DB2 |
