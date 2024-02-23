@@ -1,6 +1,6 @@
 # Multithreading (FireDAC)
 
-Em uma aplicação multithread, uma boa pratica é isolar os componentes de acesso ao banco de dados, a violação dessa prática pode gerar erros do tipo access violation entre outros erros por causo do compartilhamento desses componentes. Para ajudar a resolver esse problema, a [Embarcadero](https://www.embarcadero.com/br/) disponibilizou um componente, o **FDManager**, que é responsável pelas definições de conexão e gerenciamento de conexões e é thread-safe(utilização segura em ambientes multithread).
+Em uma aplicação multithread, uma boa prática é isolar os componentes de acesso ao banco de dados, a violação dessa prática pode gerar erros do tipo access violation entre outros erros por causo do compartilhamento desses componentes. Para ajudar a resolver esse problema, a [Embarcadero](https://www.embarcadero.com/br/) disponibilizou um componente, o **FDManager**, que é responsável pelas definições de conexão e gerenciamento de conexões e é thread-safe(utilização segura em ambientes multithread).
 
 **Fonte:** https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 
@@ -8,18 +8,30 @@ Em uma aplicação multithread, uma boa pratica é isolar os componentes de aces
 
 * Definição da biblioteca cliente de acesso ao banco de dados. [OPCIONAL]
   * Por exemplo:
-      * Definir o local da biblioteca cliente(fbclient.dll) do Firebird 2.5;
-      * Definir o local da biblioteca cliente do Firebird(fbclient.dll) 64Bits;
+      * Definição do local da biblioteca cliente(fbclient.dll) do Firebird 2.5;
+      * Definição do local da biblioteca cliente do Firebird(fbclient.dll) 64Bits;
 
 * Centralização das configurações de conexão com o banco de dados.
     * Por exemplo:
-      * Definir as configurações de acesso ao banco de produção.
-      * Definir as configurações de acesso ao banco de log.
+      * Definição das configurações de acesso ao banco de produção.
+      * Definição das configurações de acesso ao banco de log.
 
-* Centralização das parametrizações do componente TFDConnection. (Esta configuração se extende para todos os FDConnection usado na aplicação)
+* Centralização das parametrizações do componente TFDConnection. (Esta configuração se estende para todos os FDConnection usado na aplicação)
   * Por exemplo:
     * FetchOptions.Mode := TFDFetchMode.fmAll;
     * ResourceOptions.AutoConnect := False;
+
+
+Além do uso do **FDManger** uma boa prática e o uso da técnica de otimização de conexão com o banco de dados, chamado de **pool de conexões**.
+
+### O que é pool de conexões com Banco de Dados?
+
+Quando precisamos realizar qualquer operação sobre um banco de dados é primeiramente necessário estabelecer uma conexão com ele, o estabelecimento dessa conexão costuma ocorrer através do protocolo **TCP/IP**, envolvendo custo para ser aberto e finalizado. Esses custos são particularmente significativos em **aplicações Web** onde você pode ter um fluxo de milhares de requisições constantes, e cada uma delas vai gerar a abertura e fechamento de uma nova conexão com o banco de dados. Uma técnica simples para evitar esse constante "abre-fecha" de conexões é manter um determinado número de conexões sempre aberta (um "pool" de conexões) e simplesmente reutilizar quando necessário, dessa forma você diminui tanto o gasto de recursos da máquina quanto o tempo de resposta da sua aplicação.
+
+Este custo para estabelecer uma conexão com o banco de dados pode ser visto na imagem abaixo, utilizando a ferramenta *WireShark* podemos ver a quantidade de pacotes que é utlizado para executar um simples select.
+
+![LogWireShark](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/bd44b13e-11fe-46c5-8e83-2692942bc7ca)
+
 
 
 * Banco de Dados: Firebird (DB\MultithreadingFireDAC.FDB)
