@@ -51,15 +51,15 @@ Para usar o **FDManager** com outros bancos de dados, verificar o link: [Databas
 | Database | DriverID | TFDConnectionDefParams | Units |
 |---|---|---|---|
 | [Microsoft SQL Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_Microsoft_SQL_Server_(FireDAC)) | MSSQL | TFDPhysMSSQLConnectionDefParams | FireDAC.Phys.MSSQLDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL |
-| [Oracle Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_Oracle_Server_(FireDAC)) | | TFDPhysOracleConnectionDefParams | FireDAC.Phys.OracleDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.Oracle |
-| [PostgreSQL](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_PostgreSQL_(FireDAC)) | TFDPhysPGConnectionDefParams | FireDAC.Phys.PGDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.PG; |
-| [MySQL Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_MySQL_Server_(FireDAC)) | TFDPhysMySQLConnectionDefParams | FireDAC.Phys.MySQLDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.MySQL |
-| [IBM DB2 Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_IBM_DB2_Server_(FireDAC))) | TFDPhysDB2ConnectionDefParams | FireDAC.Phys.DB2Def, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.ODBCBase, FireDAC.Phys.DB2 |
-| [Firebird](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_Firebird_(FireDAC)) | TFDPhysFBConnectionDefParams | FireDAC.Phys.FBDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.IBBase, FireDAC.Phys.FB |
-| [InterBase](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_InterBase_(FireDAC)) | TFDPhysIBConnectionDefParams | FireDAC.Phys.IBDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.IBBase, FireDAC.Phys.IB |
-| [SQLite](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_SQLite_database_(FireDAC)) | TFDPhysSQLiteConnectionDefParams | FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLiteDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.SQLite |
-| [MongoDB](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_MongoDB_Database_(FireDAC)) | TFDPhysMongoConnectionDefParams | FireDAC.Phys.MongoDBDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.MongoDB |
-| [ODBC](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_ODBC_Data_Source_(FireDAC)) | TFDPhysODBCConnectionDefParams | FireDAC.Phys.ODBCDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.ODBCBase, FireDAC.Phys.ODBC |
+| [Oracle Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_Oracle_Server_(FireDAC)) | Ora | TFDPhysOracleConnectionDefParams | FireDAC.Phys.OracleDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.Oracle |
+| [PostgreSQL](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_PostgreSQL_(FireDAC)) | PG |TFDPhysPGConnectionDefParams | FireDAC.Phys.PGDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.PG; |
+| [MySQL Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_MySQL_Server_(FireDAC)) | MySQL | TFDPhysMySQLConnectionDefParams | FireDAC.Phys.MySQLDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.MySQL |
+| [IBM DB2 Server](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_IBM_DB2_Server_(FireDAC))) | DB2 | TFDPhysDB2ConnectionDefParams | FireDAC.Phys.DB2Def, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.ODBCBase, FireDAC.Phys.DB2 |
+| [Firebird](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_Firebird_(FireDAC)) | FB | TFDPhysFBConnectionDefParams | FireDAC.Phys.FBDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.IBBase, FireDAC.Phys.FB |
+| [InterBase](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_InterBase_(FireDAC)) | IB | TFDPhysIBConnectionDefParams | FireDAC.Phys.IBDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.IBBase, FireDAC.Phys.IB |
+| [SQLite](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_SQLite_database_(FireDAC)) | SQLite | TFDPhysSQLiteConnectionDefParams | FireDAC.Stan.ExprFuncs, FireDAC.Phys.SQLiteDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.SQLite |
+| [MongoDB](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_MongoDB_Database_(FireDAC)) | Mongo | TFDPhysMongoConnectionDefParams | FireDAC.Phys.MongoDBDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.MongoDB |
+| [ODBC](https://docwiki.embarcadero.com/RADStudio/Sydney/en/Connect_to_ODBC_Data_Source_(FireDAC)) | ODBC | TFDPhysODBCConnectionDefParams | FireDAC.Phys.ODBCDef, FireDAC.Stan.Intf, FireDAC.Phys, FireDAC.Phys.ODBCBase, FireDAC.Phys.ODBC |
 
 * FireDAC databases supported by RAD Studio: [FireDAC Database Support](https://docwiki.embarcadero.com/Status/en/FireDAC_Database_Support)
 
