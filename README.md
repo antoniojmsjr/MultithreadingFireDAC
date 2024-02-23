@@ -16,8 +16,7 @@ Em uma aplicação multithread, uma boa pratica é isolar os componentes de aces
       * Definir as configurações de acesso ao banco de produção.
       * Definir as configurações de acesso ao banco de log.
 
-* Centralização das parametrizações do componente TFDConnection.
-NOTA: Essa configuração se extende para todos os FDConnection usado na aplicação.
+* Centralização das parametrizações do componente TFDConnection. (Essa configuração se extende para todos os FDConnection usado na aplicação)
   * Por exemplo:
     * FetchOptions.Mode := TFDFetchMode.fmAll;
     * ResourceOptions.AutoConnect := False;
