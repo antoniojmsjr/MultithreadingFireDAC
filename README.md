@@ -29,7 +29,7 @@ Além do uso do **FDManger** uma boa prática e o uso da técnica de otimizaçã
 Quando precisamos realizar qualquer operação sobre um banco de dados é primeiramente necessário estabelecer uma conexão com ele, o estabelecimento dessa conexão costuma ocorrer através do protocolo **TCP/IP**, envolvendo custo para ser **aberto** e **fechado**. Esse custo é particularmente significativo em *aplicações Web* onde você pode ter um fluxo de milhares de requisições constante, e cada uma delas vai gerar a abertura e fechamento de uma nova conexão com o banco de dados. Uma técnica simples para evitar esse constante "abre-fecha" de conexões é manter um determinado número de conexões sempre aberta (um **pool** de conexões) e simplesmente reutilizar quando necessário, dessa forma você diminui tanto o gasto de recurso da máquina quanto o tempo de resposta da sua aplicação.
 
 
-Este custo para estabelecer uma conexão com o banco de dados pode ser visto na imagem abaixo, utilizando a ferramenta *WireShark* podemos ver a quantidade de pacotes que é utlizado para executar um simples select.
+Esse custo para estabelecer uma conexão com o banco de dados pode ser visto na imagem abaixo, utilizando a ferramenta *WireShark* podemos ver a quantidade de pacotes que é utlizado para executar um simples select.
 
 ![LogWireShark](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/bd44b13e-11fe-46c5-8e83-2692942bc7ca)
 
@@ -51,7 +51,9 @@ Para configurar um pool de conexões utilizaremos o **FDManager**, e as propried
 |POOL_ExpireTimeout|O tempo em milissegundos, após o qual a **conexão inativa** pode ser excluída do pool e destruída.</br></br>O valor padrão é 90000 ms (90 segundos).|60000 ms</br>60 s |
 |POOL_MaximumItems|O número máximo de conexões no Pool.</br></br>Quando o aplicativo requer mais conexões, uma exceção é gerada. O valor padrão é 50.</br></br>**Quando se atinge o número total de conexões especificada nessa  propriedade, é gerado uma exceção:**</br></br>![image](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/ad15ed9f-f02a-4a60-b3a1-c37df8b62316)|100|
 
-Em geral, o **FDManager** mantém um pool de conexões "físicas" abertas, e quando TFDConnection.Connected é definido como True, o FireDAC pega uma conexão "física" do pool e a usa. Quando TFDConnection.Connected é definido como False, a conexão "física" não é fechada, mas colocada de volta no pool.
+Em geral, o **FDManager** mantém um pool de conexões "física" aberta, quando: 
+* Quando TFDConnection.Connected é definido como **True**, o FireDAC pega uma conexão "física" do pool e a usa.
+* Quando TFDConnection.Connected é definido como **False**, a conexão "física" não é fechada, mas colocada de volta no pool.
 
 ### Configuração de acesso ao banco de dados
 
