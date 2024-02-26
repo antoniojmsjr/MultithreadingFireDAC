@@ -79,9 +79,11 @@ Para usar o **FDManager** com outros bancos de dados, verificar o link: [Databas
 Em anexo no projeto existem dois exemplos de uso de conexão com o banco de dados em ambientes multithread.
 
 ### Exemplo de consulta com pool de conexões ATIVADO:
-* Tempo de execução: 00:00:16.193
+* Tempo de execução: 00:00:16.193</br>
+
 https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/94dea460-6932-4c9b-89a9-0db6ff67b4c7
 
 ### Exemplo de consulta com pool de conexões DESATIVADO:
-* Tempo de execução: 00:01:00.929
+* Tempo de execução: 00:01:00.929</br>
+
 https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/75e72a62-5c7d-44c1-86e9-ed0e47cbcac8
