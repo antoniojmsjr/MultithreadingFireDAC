@@ -109,8 +109,6 @@ object frmMain: TfrmMain
       Align = alTop
       Caption = ' Pool de Conex'#227'o '
       TabOrder = 0
-      ExplicitLeft = 322
-      ExplicitTop = 151
       object Label4: TLabel
         Left = 177
         Top = 26
@@ -209,7 +207,6 @@ object frmMain: TfrmMain
       Caption = 'pnlHeader'
       ShowCaption = False
       TabOrder = 3
-      ExplicitTop = -3
       object gbxConfiguracaoConnectionDB: TGroupBox
         AlignWithMargins = True
         Left = 3
@@ -253,7 +250,10 @@ object frmMain: TfrmMain
           Top = 17
           Width = 250
           Height = 21
-          Enabled = False
+          Hint = 
+            'IDENTIFICA'#199#195'O DA CONEX'#195'O, USADO NO FDConnection.ConnectionDefNam' +
+            'e PARA RECUPERAR UMA CONEX'#195'O'
+          ReadOnly = True
           TabOrder = 0
           Text = 'FB_CONNECTION_DATABASE'
         end
@@ -283,10 +283,6 @@ object frmMain: TfrmMain
         Align = alClient
         Caption = ' Configura'#231#227'o do driver de comunica'#231#227'o '
         TabOrder = 1
-        ExplicitLeft = 759
-        ExplicitTop = 28
-        ExplicitWidth = 365
-        ExplicitHeight = 120
         object Label11: TLabel
           Left = 12
           Top = 25
@@ -313,7 +309,12 @@ object frmMain: TfrmMain
           Top = 17
           Width = 225
           Height = 21
-          Enabled = False
+          Hint = 
+            'IDENTIFICA'#199#195'O DO DRIVER, USADO NA CONFIGURA'#199#195'O DA CONEX'#195'O FDPhys' +
+            'FBConnectionDefParams.DriverID'
+          BiDiMode = bdLeftToRight
+          ParentBiDiMode = False
+          ReadOnly = True
           TabOrder = 0
           Text = 'DRIVER_FB_2.5'
         end
@@ -346,8 +347,6 @@ object frmMain: TfrmMain
     Caption = 'pnlTeste'
     ShowCaption = False
     TabOrder = 2
-    ExplicitTop = 301
-    ExplicitHeight = 260
     object Bevel3: TBevel
       AlignWithMargins = True
       Left = 3
@@ -432,7 +431,6 @@ object frmMain: TfrmMain
       Align = alClient
       Caption = ' Log '
       TabOrder = 1
-      ExplicitHeight = 219
       object mmoLog: TMemo
         Left = 2
         Top = 15
@@ -443,7 +441,6 @@ object frmMain: TfrmMain
         PopupMenu = ppMain
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitHeight = 202
       end
     end
   end

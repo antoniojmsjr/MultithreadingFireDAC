@@ -153,7 +153,7 @@ begin
       lFDPhysFBConnectionDefParams.PoolCleanupTimeout := StrToInt(edtPOOL_CleanupTimeout.Text);
       lFDPhysFBConnectionDefParams.PoolExpireTimeout := StrToInt(edtPOOL_ExpireTimeout.Text);
     end,
-    edtDriverDefName.Text, //NOME DA CONFI DO DRIVER - [OPCIONAL]
+    edtDriverDefName.Text, //NOME DA CONFI DO DRIVER - [OPCIONAL] - IDENTIFICAÇÃO DO DRIVER, USADO NA CONFIGURAÇÃO DA CONEXÃO FDPhysFBConnectionDefParams.DriverID
     procedure(FDStanDefinition: IFDStanDefinition) //PARAMETRIZAÇÃO DO DRIVER COM O BANCO DE DADOS - [OPCIONAL]
     begin
       FDStanDefinition.AsString['BaseDriverID'] := 'FB'; //DRIVER BASE DO FIREDAC
