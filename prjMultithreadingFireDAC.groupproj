@@ -6,6 +6,9 @@
         <Projects Include="Samples\MultithreadingFireDAC\MultithreadingFireDAC.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Samples\Horse\Console\HorseConsole.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +26,23 @@
     <Target Name="MultithreadingFireDAC:Make">
         <MSBuild Projects="Samples\MultithreadingFireDAC\MultithreadingFireDAC.dproj" Targets="Make"/>
     </Target>
+    <Target Name="HorseConsole">
+        <MSBuild Projects="Samples\Horse\Console\HorseConsole.dproj"/>
+    </Target>
+    <Target Name="HorseConsole:Clean">
+        <MSBuild Projects="Samples\Horse\Console\HorseConsole.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HorseConsole:Make">
+        <MSBuild Projects="Samples\Horse\Console\HorseConsole.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="MultithreadingFireDAC"/>
+        <CallTarget Targets="MultithreadingFireDAC;HorseConsole"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="MultithreadingFireDAC:Clean"/>
+        <CallTarget Targets="MultithreadingFireDAC:Clean;HorseConsole:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="MultithreadingFireDAC:Make"/>
+        <CallTarget Targets="MultithreadingFireDAC:Make;HorseConsole:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
