@@ -169,11 +169,13 @@ begin
       FDConnection.FetchOptions.Mode := TFDFetchMode.fmAll;
       FDConnection.ResourceOptions.AutoConnect := False;
 
+      FDConnection.FormatOptions.MapRules.Clear;
       with FDConnection.FormatOptions.MapRules.Add do
       begin
         SourceDataType := dtDateTimeStamp; { Firebird TIMESTAMP }
         TargetDataType := dtDateTime; { TFDParam.DataType }
       end;
+      FDConnection.FormatOptions.OwnMapRules := True;
     end);
 
   lblTestConnection.Enabled := True;
