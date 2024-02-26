@@ -129,7 +129,7 @@ begin
   btnExecuteQuery.Enabled := False;
 
   TFDConnectionManager.ConnectionConfig(
-    edtConnectionDefName.Text, //NOME DA CONFIG DE CONEXÃO COM O BANCO DE DADOS
+    edtConnectionDefName.Text, //NOME DA CONFIG DE CONEXÃO COM O BANCO DE DADOS - IDENTIFICAÇÃO DA CONEXÃO, USADO NO FDConnection.ConnectionDefName PARA RECUPERAR UMA CONEXÃO
 
     procedure(FDConnectionDefParams: TFDConnectionDefParams) //PARAMETRIZAÇÃO DA CONEXÃO COM O BANCO DE DADOS
     var
