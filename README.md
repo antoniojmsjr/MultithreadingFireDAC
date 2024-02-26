@@ -78,10 +78,10 @@ Para usar o **FDManager** com outros bancos de dados, verificar o link: [Databas
 
 Em anexo no projeto existem dois exemplos de uso de conexão com o banco de dados em ambientes multithread.
 
-1º Exemplo usando conexões em ambiente multithreading para *desktop*.</br>
+1º Exemplo, usando conexões em ambiente multithreading para *desktop*.</br>
   * Exemplo compilado: [Download](https://github.com/antoniojmsjr/MultithreadingFireDAC/files/14411938/MultithreadingFireDAC.zip)</br>
 
-2º Exemplo usando conexões em ambiente multithreading para servidor web com [Horse](https://github.com/HashLoad/horse).
+2º Exemplo, usando conexões em ambiente multithreading para servidor web com [Horse](https://github.com/HashLoad/horse).
  * Dependência middlewares
    * [Jhonson](https://github.com/HashLoad/jhonson)
    * [Handle-exception](https://github.com/HashLoad/handle-exception)
