@@ -2,7 +2,7 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'Multithreading (FireDAC)'
-  ClientHeight = 561
+  ClientHeight = 661
   ClientWidth = 784
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
@@ -12,12 +12,13 @@ object frmMain: TfrmMain
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  ShowHint = True
   PixelsPerInch = 96
   TextHeight = 13
   object Bevel2: TBevel
     AlignWithMargins = True
     Left = 3
-    Top = 293
+    Top = 288
     Width = 778
     Height = 5
     Align = alTop
@@ -81,7 +82,7 @@ object frmMain: TfrmMain
     Left = 0
     Top = 40
     Width = 784
-    Height = 250
+    Height = 245
     Align = alTop
     BevelOuter = bvNone
     Caption = 'pnlMain'
@@ -90,7 +91,7 @@ object frmMain: TfrmMain
     object Bevel1: TBevel
       AlignWithMargins = True
       Left = 3
-      Top = 213
+      Top = 209
       Width = 778
       Height = 5
       Align = alTop
@@ -99,79 +100,17 @@ object frmMain: TfrmMain
       ExplicitTop = 275
       ExplicitWidth = 534
     end
-    object gbxConfiguracaoDB: TGroupBox
-      AlignWithMargins = True
-      Left = 3
-      Top = 3
-      Width = 778
-      Height = 118
-      Align = alTop
-      Caption = ' Configura'#231#227'o de Acesso '
-      TabOrder = 0
-      object Label1: TLabel
-        Left = 12
-        Top = 25
-        Width = 112
-        Height = 13
-        Caption = 'Connection Def. Name:'
-      end
-      object Label2: TLabel
-        Left = 12
-        Top = 57
-        Width = 81
-        Height = 13
-        Caption = 'Banco de Dados:'
-      end
-      object SpeedButton1: TSpeedButton
-        Left = 392
-        Top = 49
-        Width = 23
-        Height = 21
-        Caption = '...'
-        OnClick = SpeedButton1Click
-      end
-      object Label3: TLabel
-        Left = 12
-        Top = 90
-        Width = 44
-        Height = 13
-        Caption = 'Servidor:'
-      end
-      object edtConnectionDefName: TEdit
-        Left = 135
-        Top = 17
-        Width = 250
-        Height = 21
-        Enabled = False
-        TabOrder = 0
-        Text = 'FB_CONNECTION_DATABASE'
-      end
-      object edtBancoDados: TEdit
-        Left = 135
-        Top = 49
-        Width = 250
-        Height = 21
-        TabOrder = 1
-        TextHint = 'Selecionar banco de dados...'
-      end
-      object edtServidor: TEdit
-        Left = 135
-        Top = 82
-        Width = 250
-        Height = 21
-        TabOrder = 2
-        Text = '127.0.0.1'
-      end
-    end
     object gbxPoolDB: TGroupBox
       AlignWithMargins = True
       Left = 3
-      Top = 127
+      Top = 123
       Width = 778
       Height = 80
       Align = alTop
       Caption = ' Pool de Conex'#227'o '
-      TabOrder = 1
+      TabOrder = 0
+      ExplicitLeft = 322
+      ExplicitTop = 151
       object Label4: TLabel
         Left = 177
         Top = 26
@@ -242,35 +181,173 @@ object frmMain: TfrmMain
     end
     object btnConfigFDManager: TBitBtn
       Left = 612
-      Top = 222
+      Top = 217
       Width = 150
       Height = 25
       Caption = 'Configurar FDManager'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = btnConfigFDManagerClick
     end
     object lblTestConnection: TLinkLabel
       Left = 15
-      Top = 226
+      Top = 221
       Width = 112
       Height = 17
       Cursor = crHandPoint
       Caption = '<a href="">Testar configura'#231#227'o...</a>'
       Enabled = False
-      TabOrder = 3
+      TabOrder = 2
       OnLinkClick = lblTestConnectionLinkClick
+    end
+    object pnlHeader: TPanel
+      Left = 0
+      Top = 0
+      Width = 784
+      Height = 120
+      Align = alTop
+      BevelOuter = bvNone
+      Caption = 'pnlHeader'
+      ShowCaption = False
+      TabOrder = 3
+      ExplicitTop = -3
+      object gbxConfiguracaoConnectionDB: TGroupBox
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 420
+        Height = 114
+        Align = alLeft
+        Caption = ' Configura'#231#227'o de Acesso '
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 12
+          Top = 25
+          Width = 112
+          Height = 13
+          Caption = 'Connection Def. Name:'
+        end
+        object Label2: TLabel
+          Left = 12
+          Top = 57
+          Width = 81
+          Height = 13
+          Caption = 'Banco de Dados:'
+        end
+        object SpeedButton1: TSpeedButton
+          Left = 392
+          Top = 49
+          Width = 23
+          Height = 21
+          Caption = '...'
+          OnClick = SpeedButton1Click
+        end
+        object Label3: TLabel
+          Left = 12
+          Top = 90
+          Width = 44
+          Height = 13
+          Caption = 'Servidor:'
+        end
+        object edtConnectionDefName: TEdit
+          Left = 135
+          Top = 17
+          Width = 250
+          Height = 21
+          Enabled = False
+          TabOrder = 0
+          Text = 'FB_CONNECTION_DATABASE'
+        end
+        object edtConnectionDatabase: TEdit
+          Left = 135
+          Top = 49
+          Width = 250
+          Height = 21
+          TabOrder = 1
+          TextHint = 'Selecionar banco de dados...'
+        end
+        object edtConnectionServer: TEdit
+          Left = 135
+          Top = 82
+          Width = 250
+          Height = 21
+          TabOrder = 2
+          Text = '127.0.0.1'
+        end
+      end
+      object gbxConfiguracaoDriverDB: TGroupBox
+        AlignWithMargins = True
+        Left = 429
+        Top = 3
+        Width = 352
+        Height = 114
+        Align = alClient
+        Caption = ' Configura'#231#227'o do driver de comunica'#231#227'o '
+        TabOrder = 1
+        ExplicitLeft = 759
+        ExplicitTop = 28
+        ExplicitWidth = 365
+        ExplicitHeight = 120
+        object Label11: TLabel
+          Left = 12
+          Top = 25
+          Width = 87
+          Height = 13
+          Caption = 'Driver Def. Name:'
+        end
+        object Label12: TLabel
+          Left = 12
+          Top = 57
+          Width = 68
+          Height = 13
+          Caption = 'Vendor Home:'
+        end
+        object Label13: TLabel
+          Left = 12
+          Top = 90
+          Width = 54
+          Height = 13
+          Caption = 'Vendor Lib:'
+        end
+        object edtDriverDefName: TEdit
+          Left = 119
+          Top = 17
+          Width = 225
+          Height = 21
+          Enabled = False
+          TabOrder = 0
+          Text = 'DRIVER_FB_2.5'
+        end
+        object edtDriverVendorHome: TEdit
+          Left = 119
+          Top = 49
+          Width = 225
+          Height = 21
+          TabOrder = 1
+          Text = 'C:\Program Files (x86)\Firebird\Firebird_2_5'
+        end
+        object edtDriverVendorLib: TEdit
+          Left = 119
+          Top = 82
+          Width = 225
+          Height = 21
+          TabOrder = 2
+          Text = 'fbclient.dll'
+        end
+      end
     end
   end
   object pnlTeste: TPanel
     Left = 0
-    Top = 301
+    Top = 296
     Width = 784
-    Height = 260
+    Height = 365
     Align = alClient
     BevelOuter = bvNone
     Caption = 'pnlTeste'
     ShowCaption = False
     TabOrder = 2
+    ExplicitTop = 301
+    ExplicitHeight = 260
     object Bevel3: TBevel
       AlignWithMargins = True
       Left = 3
@@ -351,19 +428,22 @@ object frmMain: TfrmMain
       Left = 0
       Top = 41
       Width = 784
-      Height = 219
+      Height = 324
       Align = alClient
       Caption = ' Log '
       TabOrder = 1
+      ExplicitHeight = 219
       object mmoLog: TMemo
         Left = 2
         Top = 15
         Width = 780
-        Height = 202
+        Height = 307
         Align = alClient
         BorderStyle = bsNone
+        PopupMenu = ppMain
         ScrollBars = ssVertical
         TabOrder = 0
+        ExplicitHeight = 202
       end
     end
   end
@@ -371,7 +451,13 @@ object frmMain: TfrmMain
     Filter = 'Firebird(*.fdb)|*.fdb'
     Options = [ofReadOnly, ofHideReadOnly, ofEnableSizing]
     Title = 'Selecionar Banco de Dados'
-    Left = 480
-    Top = 8
+    Left = 696
+  end
+  object ppMain: TPopupMenu
+    Left = 736
+    object ppiLimparLog: TMenuItem
+      Caption = 'LIMPAR LOG'
+      OnClick = ppiLimparLogClick
+    end
   end
 end

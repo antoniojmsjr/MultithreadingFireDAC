@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
   Vcl.StdCtrls, Vcl.Buttons, Vcl.Samples.Spin, System.Diagnostics, Vcl.ComCtrls,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, Vcl.Menus;
 
 type
   TTypeLog = (tlERRO, tlTEMPO, tlINFO, tlLINE);
@@ -46,15 +46,7 @@ type
     pnlToolbar: TPanel;
     imgToolbar: TImage;
     pnlMain: TPanel;
-    gbxConfiguracaoDB: TGroupBox;
-    Label1: TLabel;
-    edtConnectionDefName: TEdit;
-    Label2: TLabel;
     odlDataBase: TOpenDialog;
-    edtBancoDados: TEdit;
-    SpeedButton1: TSpeedButton;
-    Label3: TLabel;
-    edtServidor: TEdit;
     gbxPoolDB: TGroupBox;
     ckbPooled: TCheckBox;
     Label4: TLabel;
@@ -80,11 +72,30 @@ type
     edtQuantidadeRegistros: TSpinEdit;
     edtInteracoes: TSpinEdit;
     pgbStatusExecute: TProgressBar;
+    ppMain: TPopupMenu;
+    ppiLimparLog: TMenuItem;
+    pnlHeader: TPanel;
+    gbxConfiguracaoConnectionDB: TGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    SpeedButton1: TSpeedButton;
+    Label3: TLabel;
+    edtConnectionDefName: TEdit;
+    edtConnectionDatabase: TEdit;
+    edtConnectionServer: TEdit;
+    gbxConfiguracaoDriverDB: TGroupBox;
+    Label11: TLabel;
+    edtDriverDefName: TEdit;
+    Label12: TLabel;
+    edtDriverVendorHome: TEdit;
+    Label13: TLabel;
+    edtDriverVendorLib: TEdit;
     procedure SpeedButton1Click(Sender: TObject);
     procedure btnExecuteQueryClick(Sender: TObject);
     procedure btnConfigFDManagerClick(Sender: TObject);
     procedure lblTestConnectionLinkClick(Sender: TObject; const Link: string;
       LinkType: TSysLinkType);
+    procedure ppiLimparLogClick(Sender: TObject);
   private
     { Private declarations }
     FTotalElapsedMillisecondsDML: TStopwatch;
@@ -118,26 +129,41 @@ begin
   btnExecuteQuery.Enabled := False;
 
   TFDConnectionManager.ConnectionConfig(
-    edtConnectionDefName.Text, //NOME DA CONEXÃO COM O BANCO DE DADOS
+    edtConnectionDefName.Text, //NOME DA CONFIG DE CONEXÃO COM O BANCO DE DADOS
 
     procedure(FDConnectionDefParams: TFDConnectionDefParams) //PARAMETRIZAÇÃO DA CONEXÃO COM O BANCO DE DADOS
     var
       lFDPhysFBConnectionDefParams: TFDPhysFBConnectionDefParams;
     begin
+      // CLASSE RESPONSÁVEL PELAS CONFIG DE ACESSO AO BANCO DE DADOS FIREBIRD: TFDPhysFBConnectionDefParams  - https://github.com/antoniojmsjr/MultithreadingFireDAC?tab=readme-ov-file#configura%C3%A7%C3%A3o-de-acesso-ao-banco-de-dados
       lFDPhysFBConnectionDefParams := TFDPhysFBConnectionDefParams(FDConnectionDefParams);
-      lFDPhysFBConnectionDefParams.DriverID := 'FB';
-      lFDPhysFBConnectionDefParams.Database := edtBancoDados.Text;
+
+      // IDENTIFICAÇÃO DO DRIVER PERSONALIZADO NA PROPRIEDADE FDStanDefinition - [OPCIONAL]
+      lFDPhysFBConnectionDefParams.DriverID := edtDriverDefName.Text; //[OPCIONAL] OU lFDPhysFBConnectionDefParams.DriverID := 'FB'
+
+      lFDPhysFBConnectionDefParams.Database := edtConnectionDatabase.Text;
       lFDPhysFBConnectionDefParams.UserName := 'SYSDBA';
       lFDPhysFBConnectionDefParams.Password := 'masterkey';
-      lFDPhysFBConnectionDefParams.Server := edtServidor.Text;
+      lFDPhysFBConnectionDefParams.Server := edtConnectionServer.Text;
       lFDPhysFBConnectionDefParams.Protocol := TIBProtocol.ipLocal;
+      lFDPhysFBConnectionDefParams.CharacterSet := TIBCharacterSet.csWIN1252;
 
       lFDPhysFBConnectionDefParams.Pooled := ckbPooled.Checked;
       lFDPhysFBConnectionDefParams.PoolMaximumItems := StrToInt(edtPOOL_MaximumItems.Text);
       lFDPhysFBConnectionDefParams.PoolCleanupTimeout := StrToInt(edtPOOL_CleanupTimeout.Text);
       lFDPhysFBConnectionDefParams.PoolExpireTimeout := StrToInt(edtPOOL_ExpireTimeout.Text);
     end,
+    edtDriverDefName.Text, //NOME DA CONFI DO DRIVER - [OPCIONAL]
+    procedure(FDStanDefinition: IFDStanDefinition) //PARAMETRIZAÇÃO DO DRIVER COM O BANCO DE DADOS - [OPCIONAL]
+    begin
+      FDStanDefinition.AsString['BaseDriverID'] := 'FB'; //DRIVER BASE DO FIREDAC
 
+      //DEFINE O LOCAL DA DLL CLIENT DO FIREBIRD.
+      FDStanDefinition.AsString['VendorHome'] := edtDriverVendorHome.Text; //https://docwiki.embarcadero.com/Libraries/Sydney/en/FireDAC.Phys.TFDPhysDriverLink.VendorHome
+
+      //DEFINE O NOME DA DLL CLIENT DO FIREBIRD.
+      FDStanDefinition.AsString['VendorLib'] := edtDriverVendorLib.Text; //https://docwiki.embarcadero.com/Libraries/Sydney/en/FireDAC.Phys.TFDPhysDriverLink.VendorLib
+    end,
     procedure(FDConnection: TFDCustomConnection) //CONFIGURAÇÃO DO FDConnection
     begin
       FDConnection.FetchOptions.Mode := TFDFetchMode.fmAll;
@@ -213,14 +239,19 @@ begin
   btnExecuteQuery.Enabled := True;
   StatusExecucao(False);
 
-  Log(tlTEMPO, FormatDateTime('hh:nn:ss:zzz', FTotalElapsedMillisecondsDML.ElapsedMilliseconds/MSecsPerDay));
+  Log(tlTEMPO, FormatDateTime('hh:nn:ss.zzz', FTotalElapsedMillisecondsDML.ElapsedMilliseconds/MSecsPerDay));
   Log(tlLINE, EmptyStr);
+end;
+
+procedure TfrmMain.ppiLimparLogClick(Sender: TObject);
+begin
+  mmoLog.Clear;
 end;
 
 procedure TfrmMain.SpeedButton1Click(Sender: TObject);
 begin
   if odlDataBase.Execute then
-    edtBancoDados.Text := odlDataBase.FileName;
+    edtConnectionDatabase.Text := odlDataBase.FileName;
 end;
 
 procedure TfrmMain.StatusExecucao(const pAtivar: Boolean);
