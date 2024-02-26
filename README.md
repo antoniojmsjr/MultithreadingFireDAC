@@ -78,6 +78,15 @@ Para usar o **FDManager** com outros bancos de dados, verificar o link: [Databas
 
 Em anexo no projeto existem dois exemplos de uso de conexão com o banco de dados em ambientes multithread.
 
+1º Exemplo usando conexões em ambiente multithreading para *desktop*.</br>
+2º Exemplo usando conexões em ambiente multithreading para servidor web com [Horse](https://github.com/HashLoad/horse).
+ * Teste de stress com [JMeter](https://jmeter.apache.org/)
+
+Ambos os exemplo usam o banco de dados Firebird
+* [Firebird 2.5](https://firebirdsql.org/en/firebird-2-5/)
+* Banco MultithreadingFireDAC.FDB
+  * Tabela MULTITHREADING com 100.000 mil registros. 
+
 ### Exemplo de consulta com pool de conexões ATIVADO:
 * Tempo de execução: 00:00:16.193</br>
 
