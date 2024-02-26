@@ -11,18 +11,18 @@ uses
 
 procedure QueryOpen(const pConnectDefName: string; const pSQL: string);
 var
+  lFDConnection: TFDConnection;
   lQuery: TFDQuery;
 begin
-  lQuery := TFDQuery.Create(nil);
-  lQuery.Connection := TFDConnection.Create(nil);
-  lQuery.Connection.ConnectionDefName := pConnectDefName;
+  lFDConnection := TFDConnection.Create(nil);
+  lQuery := TFDQuery.Create(lFDConnection);
   try
-    lQuery.SQL.Add(pSQL);
-    lQuery.Open;
+    lFDConnection.ConnectionDefName := pConnectDefName;
+    lQuery.Connection := lFDConnection;
+    lQuery.SQL.Text := pSQL;
+    lQuery.Open();
   finally
-    lQuery.Close;
-    lQuery.Connection.Free; //INTERNAL CLOSE
-    lQuery.Free;
+    lFDConnection.Free;
   end;
 end;
 
