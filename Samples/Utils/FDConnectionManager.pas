@@ -22,14 +22,14 @@ type
     { public declarations }
     class constructor Create;
     class destructor Destroy;
-    class procedure ConnectionConfig(const ConnectionDefName: string;
-                                     const ConnectionDefParams: TConnectionDefParams;
-                                     const DriverDefName: string;
-                                     const DriverDefParams: TDriverDefParams;
-                                     const ConnectionConfig: TConnectionConfig); overload;
-    class procedure ConnectionConfig(const ConnectionDefName: string;
-                                     const ConnectionDefParams: TConnectionDefParams;
-                                     const ConnectionConfig: TConnectionConfig); overload;
+    class procedure ConnectionSetup(const ConnectionDefName: string;
+                                    const ConnectionDefParams: TConnectionDefParams;
+                                    const DriverDefName: string;
+                                    const DriverDefParams: TDriverDefParams;
+                                    const ConnectionConfig: TConnectionConfig); overload;
+    class procedure ConnectionSetup(const ConnectionDefName: string;
+                                    const ConnectionDefParams: TConnectionDefParams;
+                                    const ConnectionConfig: TConnectionConfig); overload;
   end;
 
 implementation
@@ -49,7 +49,7 @@ begin
   FDManager.Close;
 end;
 
-class procedure TFDConnectionManager.ConnectionConfig(
+class procedure TFDConnectionManager.ConnectionSetup(
   const ConnectionDefName: string;
   const ConnectionDefParams: TConnectionDefParams;
   const ConnectionConfig: TConnectionConfig);
@@ -95,7 +95,7 @@ begin
     FDManager.Open;
 end;
 
-class procedure TFDConnectionManager.ConnectionConfig(
+class procedure TFDConnectionManager.ConnectionSetup(
   const ConnectionDefName: string; const ConnectionDefParams: TConnectionDefParams;
   const DriverDefName: string; const DriverDefParams: TDriverDefParams;
   const ConnectionConfig: TConnectionConfig);

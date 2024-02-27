@@ -26,7 +26,7 @@ uses
 procedure FDManagerConnection(const pDataBase: string);
 begin
 
-  TFDConnectionManager.ConnectionConfig(
+  TFDConnectionManager.ConnectionSetup(
     'CONNECTION_DB_APP', //NOME DA CONEXÃO COM O BANCO DE DADOS - IDENTIFICAÇÃO DA CONEXÃO, USADO NO FDConnection.ConnectionDefName PARA RECUPERAR UMA CONEXÃO
 
     procedure(FDConnectionDefParams: TFDConnectionDefParams) //PARAMETRIZAÇÃO DA CONEXÃO COM O BANCO DE DADOS
