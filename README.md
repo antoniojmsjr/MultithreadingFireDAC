@@ -13,8 +13,8 @@ Em uma aplicação multithread, uma boa prática é isolar os componentes de ace
 
 * Centralização das configurações de conexão com o banco de dados.
     * Por exemplo:
-      * Definição das configurações de acesso ao banco de produção.
-      * Definição das configurações de acesso ao banco de log.
+      * Definição das configurações de acesso ao banco de dados de produção.
+      * Definição das configurações de acesso ao banco de dados de log.
 
 * Centralização das parametrizações do componente TFDConnection. (Esta configuração se estende para todos os FDConnection usado na aplicação)
   * Por exemplo:
