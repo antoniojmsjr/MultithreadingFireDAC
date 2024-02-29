@@ -1,6 +1,6 @@
 # Multithreading (FireDAC)
 
-Em uma aplicação multithread, uma boa prática é isolar os componentes de acesso ao banco de dados, a violação dessa prática pode gerar erros do tipo access violation e outros erros. Para ajudar a resolver esse problema, a [Embarcadero](https://www.embarcadero.com/br/) disponibilizou um componente, **[FDManager](http://docwiki.embarcadero.com/Libraries/Rio/en/FireDAC.Comp.Client.TFDManager)**, que é responsável pelas *definições de conexão* e *gerenciamento de conexões* e é **thread-safe**(utilização segura em ambientes multithread).
+Em uma aplicação multithread, uma boa prática é isolar os componentes de acesso ao banco de dados, a violação dessa prática pode gerar *erros* do tipo access violation e outros erros. Para ajudar a resolver esse problema, a [Embarcadero](https://www.embarcadero.com/br/) disponibilizou um componente, **[FDManager](http://docwiki.embarcadero.com/Libraries/Rio/en/FireDAC.Comp.Client.TFDManager)**, que é responsável pelas *definições de conexão* e *gerenciamento de conexões* e é **thread-safe**(utilização segura em ambientes multithread).
 
 **Fonte:** https://docwiki.embarcadero.com/RADStudio/Sydney/en/Multithreading_(FireDAC)
 
