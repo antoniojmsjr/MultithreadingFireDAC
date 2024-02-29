@@ -39,8 +39,9 @@ begin
 
   lSW := TStopwatch.StartNew;
   try
-    QueryOpen('CONNECTION_DB_APP', //IDENTIFICAÇÃO DA CONEXÃO, USADO NO FDConnection.ConnectionDefName PARA RECUPERAR UMA CONEXÃO
-              'SELECT FIRST 5000 * FROM MULTITHREADING');
+    TCommand.Build('CONNECTION_DB_APP') //IDENTIFICAÇÃO DA CONEXÃO, USADO NO FDConnection.ConnectionDefName PARA RECUPERAR UMA CONEXÃO
+      .Query
+        .Open('SELECT FIRST 5000 * FROM MULTITHREADING');
   except
     on E: Exception do
     begin

@@ -288,7 +288,9 @@ begin
   procedure(AIndex: Integer)
   begin
     try
-      QueryOpen(FConnectionDefName, lSQL);
+      TCommand.Build(FConnectionDefName)
+        .Query
+          .Open(lSQL);
     except
       on E: Exception do
       begin
