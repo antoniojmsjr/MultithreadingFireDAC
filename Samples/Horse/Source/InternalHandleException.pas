@@ -27,13 +27,13 @@ begin
       ASendException := False;
       lJSON := TJSONObject.Create;
       lJSON.AddPair('mensagem', 'Sistema indisponível, tente mais tarde.');
-      AResponse.Send<TJSONObject>(lJSON).Status(THTTPStatus.InternalServerError);
+      AResponse.Send<TJSONObject>(lJSON).Status(THTTPStatus.ServiceUnavailable);
     end
     else
     begin
       ASendException := False;
       lJSON := TJSONObject.Create;
-      lJSON.AddPair('erro', Format('Erro: %s - Class: %s', [AException.Message, AException.QualifiedClassName]));
+      lJSON.AddPair('mensagem', Format('Erro: %s - Class: %s', [AException.Message, AException.QualifiedClassName]));
       AResponse.Send<TJSONObject>(lJSON).Status(THTTPStatus.InternalServerError);
     end;
   end;

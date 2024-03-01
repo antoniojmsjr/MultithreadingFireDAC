@@ -11,7 +11,8 @@ uses
   Horse.Jhonson,
   Routers in '..\Source\Routers.pas',
   ConnectionDBConfig in '..\Source\ConnectionDBConfig.pas',
-  InternalHandleException in '..\Source\InternalHandleException.pas';
+  InternalHandleException in '..\Source\InternalHandleException.pas',
+  DataModule in '..\Source\DataModule.pas' {dmDataModule: TDataModule};
 
 begin
   {$IFDEF MSWINDOWS}

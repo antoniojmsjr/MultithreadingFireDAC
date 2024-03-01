@@ -42,7 +42,7 @@ begin
       lFDPhysFBConnectionDefParams.Protocol := TIBProtocol.ipLocal;
       lFDPhysFBConnectionDefParams.CharacterSet := TIBCharacterSet.csWIN1252;
 
-      lFDPhysFBConnectionDefParams.Pooled := False;
+      lFDPhysFBConnectionDefParams.Pooled := True;
       lFDPhysFBConnectionDefParams.PoolMaximumItems := 100;
       lFDPhysFBConnectionDefParams.PoolCleanupTimeout := 15000;
       lFDPhysFBConnectionDefParams.PoolExpireTimeout := 60000;
@@ -51,7 +51,9 @@ begin
     procedure(FDConnection: TFDCustomConnection) //CONFIGURAÇÃO DO FDConnection
     begin
       FDConnection.FetchOptions.Mode := TFDFetchMode.fmAll;
+      FDConnection.FetchOptions.AutoClose := True;
       FDConnection.ResourceOptions.AutoConnect := True;
+      FDConnection.ResourceOptions.AutoReconnect := False;
 
       FDConnection.FormatOptions.MapRules.Clear;
       with FDConnection.FormatOptions.MapRules.Add do

@@ -17,12 +17,13 @@ type
     class procedure Register;
     class procedure GetPing(Req: THorseRequest; Res: THorseResponse; Next: TNextProc);
     class procedure GetSelect(Req: THorseRequest; Res: THorseResponse; Next: TNextProc);
+    class procedure GetSelectDataModule(Req: THorseRequest; Res: THorseResponse; Next: TNextProc);
   end;
 
 implementation
 
 uses
-  System.SysUtils, Utils.DB, FireDAC.Stan.Error;
+  System.SysUtils, Utils.DB, FireDAC.Stan.Error, DataModule;
 
 { TRouters }
 
@@ -49,8 +50,37 @@ begin
       raise;
     end;
   end;
-  lSW.Stop;
 
+  lSW.Stop;
+  lMsg := '{"execute_time": "' + FormatDateTime('hh:nn:ss.zzz', lsw.ElapsedMilliseconds/MSecsPerDay) + '"}';
+  Res.Send(lMsg).Status(200).ContentType('application/json');
+end;
+
+class procedure TRouters.GetSelectDataModule(Req: THorseRequest;
+  Res: THorseResponse; Next: TNextProc);
+var
+  lSW: TStopwatch;
+  lMsg: string;
+  ldmDataModule: TdmDataModule;
+begin
+  lSW := TStopwatch.StartNew;
+
+  ldmDataModule := TdmDataModule.Create(nil);
+  try
+    try
+      ldmDataModule.FDQuery.Open;
+    except
+      on E: Exception do
+      begin
+        lSW.Stop;
+        raise;
+      end;
+    end;
+  finally
+    FreeAndNil(ldmDataModule);
+  end;
+
+  lSW.Stop;
   lMsg := '{"execute_time": "' + FormatDateTime('hh:nn:ss.zzz', lsw.ElapsedMilliseconds/MSecsPerDay) + '"}';
   Res.Send(lMsg).Status(200).ContentType('application/json');
 end;
@@ -59,6 +89,7 @@ class procedure TRouters.Register;
 begin
   THorse.Get('/ping', GetPing);
   THorse.Get('/select', GetSelect);
+  THorse.Get('/select/datamodule', GetSelectDataModule);
 end;
 
 end.
