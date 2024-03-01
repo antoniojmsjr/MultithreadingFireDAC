@@ -19,7 +19,7 @@ Em uma aplicação multithread, uma boa prática é isolar os componentes de ace
 * Centralização das parametrizações do componente TFDConnection. (Esta configuração se estende para todos os FDConnection usado na aplicação)
   * Por exemplo:
     * FetchOptions.Mode := TFDFetchMode.fmAll;
-    * ResourceOptions.AutoConnect := False;
+    * ResourceOptions.AutoConnect := True;
 
 
 Além do uso do **FDManger** uma boa prática e o uso da técnica de otimização de conexão com o banco de dados, chamado de **pool de conexões**.
