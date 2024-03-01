@@ -13,7 +13,7 @@ type
   TDriverDefParams = reference to procedure(FDStanDefinition: IFDStanDefinition);
   TConnectionConfig = reference to procedure(FDConnection: TFDCustomConnection);
 
-  TFDConnectionManager = class
+  TFDConnectionManager = class(Tobject)
   private
     { private declarations }
   protected
@@ -38,7 +38,8 @@ implementation
 
 class constructor TFDConnectionManager.Create;
 begin
-  FDManager.Close;
+  if FDManager.Active then
+    FDManager.Close;
   FDManager.ActiveStoredUsage := [auRunTime];
   FDManager.ConnectionDefFileAutoLoad := False;
   FDManager.DriverDefFileAutoLoad := False;
@@ -46,7 +47,10 @@ end;
 
 class destructor TFDConnectionManager.Destroy;
 begin
-  FDManager.Close;
+  if FDManager.Active then
+    FDManager.Close;
+
+  Sleep(10);
 end;
 
 class procedure TFDConnectionManager.ConnectionSetup(
@@ -149,5 +153,6 @@ begin
     end;
   end;
 end;
+
 
 end.
