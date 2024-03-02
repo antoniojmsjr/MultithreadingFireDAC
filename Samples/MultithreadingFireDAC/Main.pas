@@ -288,7 +288,7 @@ begin
   procedure(AIndex: Integer)
   begin
     try
-      TCommand.Build(FConnectionDefName)
+      TSQLCommand.Build(FConnectionDefName)
         .Query
           .Open(lSQL);
     except

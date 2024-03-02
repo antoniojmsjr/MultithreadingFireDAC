@@ -40,7 +40,7 @@ begin
 
   lSW := TStopwatch.StartNew;
   try
-    TCommand.Build('CONNECTION_DB_APP') //IDENTIFICAÇÃO DA CONEXÃO, USADO NO FDConnection.ConnectionDefName PARA RECUPERAR UMA CONEXÃO
+    TSQLCommand.Build('CONNECTION_DB_APP') //IDENTIFICAÇÃO DA CONEXÃO, USADO NO FDConnection.ConnectionDefName PARA RECUPERAR UMA CONEXÃO
       .Query
         .Open('SELECT FIRST 5000 * FROM MULTITHREADING');
   except

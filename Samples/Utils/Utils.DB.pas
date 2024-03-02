@@ -6,17 +6,20 @@ uses
   FireDAC.Comp.Client, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Stan.Pool;
 
 Type
-  IQuery = interface
+  ISQLCommand = interface
     ['{9A5E7D0A-34FB-4FA3-83D7-D4CECD2C22D6}']
+    function GetConnection: TFDConnection;
     function GetQuery: TFDQuery;
+    property Connection: TFDConnection read GetConnection;
     property Query: TFDQuery read GetQuery;
   end;
 
-  TCommand = class(TInterfacedObject, IQuery)
+  TSQLCommand = class(TInterfacedObject, ISQLCommand)
   private
     { private declarations }
-    FFDConnection: TFDConnection;
+    FConnection: TFDConnection;
     FQuery: TFDQuery;
+    function GetConnection: TFDConnection;
     function GetQuery: TFDQuery;
     constructor Create(const pConnectionDefName: string);
   protected
@@ -24,35 +27,40 @@ Type
   public
     { public declarations }
     destructor Destroy; override;
-    class function Build(const pConnectionDefName: string): IQuery;
+    class function Build(const pConnectionDefName: string): ISQLCommand;
   end;
 
 implementation
 
-{ TCommand }
+{ TSQLCommand }
 
-class function TCommand.Build(const pConnectionDefName: string): IQuery;
+class function TSQLCommand.Build(const pConnectionDefName: string): ISQLCommand;
 begin
   Result := Self.Create(pConnectionDefName);
 end;
 
-constructor TCommand.Create(const pConnectionDefName: string);
+constructor TSQLCommand.Create(const pConnectionDefName: string);
 begin
-  FFDConnection := TFDConnection.Create(nil);
-  FQuery := TFDQuery.Create(FFDConnection);
-  FQuery.Connection := FFDConnection;
+  FConnection := TFDConnection.Create(nil);
+  FQuery := TFDQuery.Create(FConnection);
+  FQuery.Connection := FConnection;
 
-  FFDConnection.ConnectionDefName := pConnectionDefName;
+  FConnection.ConnectionDefName := pConnectionDefName;
 end;
 
-destructor TCommand.Destroy;
+destructor TSQLCommand.Destroy;
 begin
   FQuery.Close;
-  FFDConnection.Free;
+  FConnection.Free;
   inherited Destroy;
 end;
 
-function TCommand.GetQuery: TFDQuery;
+function TSQLCommand.GetConnection: TFDConnection;
+begin
+  Result := FConnection;
+end;
+
+function TSQLCommand.GetQuery: TFDQuery;
 begin
   Result := FQuery;
 end;
