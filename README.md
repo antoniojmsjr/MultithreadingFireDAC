@@ -37,6 +37,7 @@ Podemos ver na imagem abaixo o comportamento das consultas ao banco de dados usa
 
 * Do lado esquerdo o famoso "abre-fecha", um exemplo de consulta sem a utilização do pool de conexões.
 * Do lado direito, um exemplo de consulta utilizando pool de conexões.
+
 ![image](https://github.com/antoniojmsjr/MultithreadingFireDAC/assets/20980984/bfd548e1-87e9-4a55-b83e-e9a0f948c24d)
 
 
