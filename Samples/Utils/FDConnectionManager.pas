@@ -86,10 +86,20 @@ begin
 
       ConnectionConfig(lFDConnection);
 
+      {$IF DECLARED(TFDSecurityOptions)}
+
+      lFDStanConnectionDef.WriteOptions(lFDConnection.FormatOptions,
+                                        lFDConnection.UpdateOptions,
+                                        lFDConnection.FetchOptions,
+                                        lFDConnection.ResourceOptions,
+                                        lFDConnection.SecurityOptions);
+
+      {$ELSE}
       lFDStanConnectionDef.WriteOptions(lFDConnection.FormatOptions,
                                         lFDConnection.UpdateOptions,
                                         lFDConnection.FetchOptions,
                                         lFDConnection.ResourceOptions);
+      {$IFEND}
     finally
       lFDConnection.Free;
     end;
@@ -144,10 +154,20 @@ begin
 
       ConnectionConfig(lFDConnection);
 
+      {$IF DECLARED(TFDSecurityOptions)}
+
+      lFDStanConnectionDef.WriteOptions(lFDConnection.FormatOptions,
+                                        lFDConnection.UpdateOptions,
+                                        lFDConnection.FetchOptions,
+                                        lFDConnection.ResourceOptions,
+                                        lFDConnection.SecurityOptions);
+
+      {$ELSE}
       lFDStanConnectionDef.WriteOptions(lFDConnection.FormatOptions,
                                         lFDConnection.UpdateOptions,
                                         lFDConnection.FetchOptions,
                                         lFDConnection.ResourceOptions);
+      {$IFEND}
     finally
       lFDConnection.Free;
     end;
